@@ -37,10 +37,19 @@ generate_dynamic_reconfigure_options(cfg/RosAria.cfg)
 #target_link_libraries(${PROJECT_NAME} another_library)
 
 find_package(Boost REQUIRED COMPONENTS thread)
-include_directories(${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} /usr/local/Aria/include)
-link_directories(/usr/local/Aria/lib)
+include_directories(${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} )
+
+# The installation package provided by Adept doesn't follow Debian policies
+if(EXISTS "/usr/local/Aria/include/Aria.h")
+  add_definitions(-DADEPT_PKG)
+  include_directories( /usr/local/Aria/include)
+  link_directories(/usr/local/Aria/lib)
+endif()
+
 add_executable(RosAria RosAria.cpp)
 add_dependencies(RosAria rosaria_gencfg)
+add_dependencies(RosAria rosaria_gencpp)
+
 target_link_libraries(RosAria ${catkin_LIBRARIES} ${Boost_LIBRARIES} Aria pthread dl rt)
 set_target_properties(RosAria PROPERTIES COMPILE_FLAGS "-fPIC")
 #set_target_properties(RosAria PROPERTIES LINK_FLAGS "-Wl")
@@ -55,4 +64,17 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
     DEPENDS roscpp nav_msgs geometry_msgs sensor_msgs tf
+)
+
+#############
+## Install ##
+#############
+
+## Mark executables and/or libraries for installation
+install(
+  TARGETS 
+    RosAria
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

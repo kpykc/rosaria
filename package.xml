@@ -4,8 +4,8 @@
   <description>
     The <tt>RosAria</tt> node provides a ROS interface for most Adept MobileRobots, 
     MobileRobots Inc., and ActivMedia mobile robot bases including
-    Pioneer 2, Pioneer 3, AmigoBot, PeopleBot, PowerBot, PatrolBot, Seekur, Seekur Jr.,
-    Pioneer LX,
+    Pioneer 2, Pioneer 3, AmigoBot, PeopleBot, PowerBot, PatrolBot, Seekur,
+    Seekur Jr., Pioneer LX,
     and any other past, current or future robot base supported by Adept MobileRobot's 
     open source ARIA library. 
     Information from the robot base, and velocity and acceleration control, is implemented
@@ -15,11 +15,12 @@
   </description>
   <maintainer email="srecko.juric-kavelj@fer.hr">Srećko Jurić-Kavelj</maintainer>
   <maintainer email="ivan.markovic@fer.hr">Ivan Marković</maintainer>
+  <maintainer email="reed.hedges@aedpt.com">Reed Hedges</maintainer>
 
   <license>GPLv2</license>
 
-  <url>http://wiki.ros.org/ROSARIA</url>
-  <url type="bugtracker">https://github.com/amor-ros-pkg/rosaria/issues</url>
+  <url type="website">http://www.ros.org/wiki/ROSARIA</url>
+  <url type="bugtracker">https://github.com/amor-ros-pkg/rosaria/issues</url> 
 
   <author>Srećko Jurić-Kavelj</author>
 
@@ -31,6 +32,7 @@
   <build_depend>nav_msgs</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>dynamic_reconfigure</build_depend>
   <run_depend>libaria</run_depend>
@@ -38,6 +40,7 @@
   <run_depend>nav_msgs</run_depend>
   <run_depend>geometry_msgs</run_depend>
   <run_depend>sensor_msgs</run_depend>
+  <build_depend>std_msgs</build_depend>
   <run_depend>tf</run_depend>
   <run_depend>dynamic_reconfigure</run_depend>
   <!-- <test_depend>Aria</test_depend>
